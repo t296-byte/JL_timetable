@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人排程時間表</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>個人排程時間表</h1>
+
+        <div class="controls">
+            <button id="addScheduleBtn">新增排程</button>
+            <button id="undoBtn" disabled>復原</button>
+            <button id="redoBtn" disabled>重做</button>
+            
+            <label for="startDatePicker">設定起始星期日:</label>
+            <input type="date" id="startDatePicker">
+
+            <button id="exportDataBtn">匯出數據</button>
+            <input type="file" id="importDataInput" accept=".json" style="display: none;">
+            <button id="importDataBtn">匯入數據</button>
+            <button id="clearAllSchedulesBtn" class="danger-btn">清空所有排程</button>
+        </div>
+
+        <div class="schedule-grid">
+            <div class="grid-header">
+                <div class="time-label">時間</div>
+                <div class="day-label" data-day-index="0">星期日</div>
+                <div class="day-label" data-day-index="1">星期一</div>
+                <div class="day-label" data-day-index="2">星期二</div>
+                <div class="day-label" data-day-index="3">星期三</div>
+                <div class="day-label" data-day-index="4">星期四</div>
+                <div class="day-label" data-day-index="5">星期五</div>
+                <div class="day-label" data-day-index="6">星期六</div>
+            </div>
+            <div class="grid-body" id="scheduleGridBody">
+                </div>
+        </div>
+    </div>
+
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>編輯排程</h2>
+            <textarea id="scheduleTextarea" placeholder="輸入排程內容...&#10;用 * 號開頭可以建立清單項目"></textarea>
+            <div class="color-options">
+                <div class="color-box color-blue active" data-color="blue"></div>
+                <div class="color-box color-green" data-color="green"></div>
+                <div class="color-box color-yellow" data-color="yellow"></div>
+                <div class="color-box color-red" data-color="red"></div>
+                <div class="color-box color-purple" data-color="purple"></div>
+            </div>
+            <div class="modal-actions">
+                <button id="copyScheduleBtn">複製此排程</button>
+                <button id="saveScheduleBtn">儲存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
